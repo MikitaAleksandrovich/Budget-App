@@ -22,7 +22,29 @@ var budgetController = (function () {
         totals: {
             inc: 0,
             exp: 0
-        }
+        },
+	budget: 0,
+	percantage: -1 // add -1 instead of 0 because at first percentage in not exist
+    };
+
+    var calculateTotal = function (type){
+
+	var sum = 0;
+
+	data.allItems[type].forEach (function (current) {
+	    sum = sum + current.value;
+	}); 
+
+        // How forEach method works here
+        /*
+        sum = 0;
+        data.allItems.inc: [200, 400, 100];
+        sum = 0 + 200;
+        sum = 200 + 400;
+        sum = 600 + 100 = 700;
+        */
+
+	data.totals[type] = sum;	
     };
 
     return {
@@ -55,6 +77,33 @@ var budgetController = (function () {
 
             // Return the new element(newItem)
             return newItem;
+        },
+
+	calculateBudget: function () {
+	    	
+    	    // 1. Calculate total income and expenses
+            calculateTotal('exp');
+            calculateTotal('inc');
+
+	    // 2. Calculate the Budget
+	    data.budget = data.totals.inc - data.totals.exp;
+
+	    // 3. Calculate the percentage of income that we spent (if there is total incomes)
+	    if (data.totals.inc > 0) {
+                data.percentage = Math.round((data.totals.exp / data.totals.inc) * 100);
+            } else {
+                data.percentage = - 1;
+            } 
+	},
+        
+        // Return objects of budget so that UIController have access to it 
+        getBudget: function () {
+            return {
+                budget: data.budget,
+                totalInc: data.totals.inc,
+                totalExp: data.totals.exp,
+                percentage: data.percentage
+            }
         },
 
         testing: function () {
@@ -149,10 +198,10 @@ var controller = (function (budgetCtrl, UICtrl) {
     var updateBudget = function () {
 
         // 1. Calculate the budget
+	budgetCtrl.calculateBudget();
 
-
-        // 2. Return the bidget
-
+        // 2. Return the budget
+	var budget = budgetCtrl.getBudget();
 
         // 3. Display the budget on the UI
     
