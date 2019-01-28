@@ -24,7 +24,7 @@ var budgetController = (function () {
             exp: 0
         },
 	budget: 0,
-	percantage: -1 // add -1 instead of 0 because at first percentage in not exist
+	percentage: -1 // add -1 instead of 0 because at first percentage in not exist
     };
 
     var calculateTotal = function (type){
