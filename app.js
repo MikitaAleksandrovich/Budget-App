@@ -138,11 +138,11 @@ var UIController = (function () {
             inputBtn: '.add__btn',
             incomeContainer: '.income__list',
             expensesContainer: '.expenses__list',
-	    budgetLabel: '.budget__value',
+	        budgetLabel: '.budget__value',
             incomeLabel: '.budget__income--value',
             expensesLabel: '.budget__expenses--value',
             percentageLabel: '.budget__expenses--percentage',
-	    container: '.item__delete--btn'
+	        container: '.item__delete--btn',
         };
     
     return {
@@ -175,7 +175,7 @@ var UIController = (function () {
             document.querySelector(element).insertAdjacentHTML("beforeend", newHtml);
         },
 
-	 deleteListItem: function (selectorID) {
+        deleteListItem: function (selectorID) {
 
             var el = document.getElementById(selectorID);
 
@@ -231,7 +231,7 @@ var controller = (function (budgetCtrl, UICtrl) {
             }
         });  
 
-	document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
+        document.querySelector(DOM.container),addEventListener('click', ctrlDeleteItem);
     };
 
     var updateBudget = function () {
@@ -276,18 +276,18 @@ var controller = (function (budgetCtrl, UICtrl) {
 
         if (itemID) {
 
-            // inc-1 (return this for example)
+            // inc-1
             splitID = itemID.split('-');
             type = splitID[0];
             ID = parseInt(splitID[1]);
 
-            // 1. Delete the item from the data structure
-	    budgetCtrl.deleteItem(type, ID);
+            // 1. Delete the otem from the data structure
+            budgetCtrl.deleteItem(type, ID);
 
             // 2. Delete the item from the UI
-	    UICtrl.deleteListItem(itemID);
+            UICtrl.deleteListItem(itemID);
 
-	    // 3. Update and the new budget
+            // 3. Update and the new budget
             updateBudget();
         }
     }
