@@ -111,7 +111,6 @@ var budgetController = (function () {
         }
     }
 
-
 })();
 
 
@@ -128,7 +127,8 @@ var UIController = (function () {
 	    budgetLabel: '.budget__value',
             incomeLabel: '.budget__income--value',
             expensesLabel: '.budget__expenses--value',
-            percentageLabel: '.budget__expenses--percentage'
+            percentageLabel: '.budget__expenses--percentage',
+	    container: '.item__delete--btn'
         };
     
     return {
@@ -209,6 +209,8 @@ var controller = (function (budgetCtrl, UICtrl) {
                 ctrlAddItem();
             }
         });  
+
+	document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
     };
 
     var updateBudget = function () {
@@ -245,6 +247,28 @@ var controller = (function (budgetCtrl, UICtrl) {
             updateBudget();
             }
     };
+
+    var ctrlDeleteItem = function (event) {
+        var itemID, splitID, type, ID;
+
+        itemID = (event.target.parentNode.parentNode.parentNode.parentNode.id);
+
+        if (itemID) {
+
+            // inc-1
+            splitID = itemID.split('-');
+            type = splitID[0];
+            ID = parseInt(splitID[1]);
+
+            // 1. Delete the item from the data structure
+
+            // 2. Delete the item from the UI
+
+            // 3. Calculate and update the new budget
+
+            // 4. Calculate and update the percentages
+        }
+    }
 
     return {
         init: function () {
