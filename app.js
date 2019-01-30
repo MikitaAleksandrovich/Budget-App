@@ -123,24 +123,6 @@ var budgetController = (function () {
             } 
 	},
 
-	calculatePercentages: function () {
-	   /* 
-	    How I calculate %:
-            Example, I have 3 expenses:
-            a = 20
-            b = 10
-            c = 40
-            income = 100
-            % :
-            a = 20/100 = 20%
-            b = 10/100 = 10%
-            c = 40/100 = 40%
-            */  
-
-	    data.allItems.exp.forEach (function (current) {
-		current.calcPercentage();
-	});
-
         calculatePercentages: function () {
 
             /*
