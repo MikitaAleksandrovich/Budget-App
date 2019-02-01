@@ -293,6 +293,19 @@ var UIController = (function () {
         });
         },
 
+	changedType: function (type) {
+		var fields = document.querySelectorAll(
+		DOMstrings.inputType + ',' 
+		+ DOMstrings.inputDescription + ','
+		+ DOMstrings.inputValue);
+
+		nodeListForEach (fields, function(current) {
+			current.classList.toggle('red-focus');
+		}); 
+
+		document.querySelector(DOMstrings.inputBtn).classList.toggle('red');
+	},
+
         displayMonth: function () {
             var now, year, month;
 
@@ -326,6 +339,8 @@ var controller = (function (budgetCtrl, UICtrl) {
                 ctrlAddItem();
             }
         });  
+
+ 	document.querySelector(DOM.inputType).addEventListener('change', UICtrl.changedType);
 
         document.querySelector(DOM.container),addEventListener('click', ctrlDeleteItem);
     };
