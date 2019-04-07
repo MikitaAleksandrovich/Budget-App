@@ -153,15 +153,17 @@ body {
 .add__value { width: 100px;}
 
 .add__btn {
-    font-size: 35px;
+    font-size: 18px;
     background: none;
-    border: none;
     color: #28B9B5;
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;
     line-height: 1.1;
     margin-left: 10px;
+    border: 1px solid;
+    border-radius: 50%;
+    padding: 5px;
 }
 
 .add__btn:active { transform: translateY(2px); }
@@ -248,7 +250,7 @@ h2 {
 }
 
 .item__delete--btn {
-    font-size: 22px;
+    font-size: 20px;
     background: none;
     border: none;
     cursor: pointer;
