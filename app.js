@@ -102,6 +102,8 @@ var budgetController = (function () {
                 return current.id;
             });
 
+            console.log(ids);
+
             index = ids.indexOf(id);
 
             if (id !== -1) {
@@ -266,7 +268,7 @@ var UIController = (function () {
 
             fields = document.querySelectorAll(DOMstrings.inputDescription + ', ' + DOMstrings.inputValue);
 
-            fieldsArr = Array(fields);
+            fieldsArr = Array.from(fields);
 
             fieldsArr.forEach(function (current, index, array) {
                 current.value = "";
@@ -411,7 +413,7 @@ var controller = (function (budgetCtrl, UICtrl) {
         var itemID, splitID, type, ID;
 
         itemID = (event.target.parentNode.parentNode.parentNode.parentNode.id);
-
+        
         if (itemID) {
 
             // inc-1
