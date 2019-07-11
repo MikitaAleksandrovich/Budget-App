@@ -266,7 +266,7 @@ var UIController = (function () {
 
             fields = document.querySelectorAll(DOMstrings.inputDescription + ', ' + DOMstrings.inputValue);
 
-            fieldsArr = Array.prototype.slice.call(fields);
+            fieldsArr = Array(fields);
 
             fieldsArr.forEach(function (current, index, array) {
                 current.value = "";
@@ -351,6 +351,7 @@ var controller = (function (budgetCtrl, UICtrl) {
                 ctrlAddItem();
             }
         });  
+
 
         document.querySelector(DOM.inputType).addEventListener('change', UICtrl.changedType);
 
