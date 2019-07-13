@@ -203,8 +203,7 @@ var UIController = (function () {
         2000 --> + 2,000.00
         */
 
-        num = Math.abs(num);
-        num = num.toFixed(2);
+        num = Math.abs(num).toFixed(2);
 
         numSplit = num.split('.');
 
@@ -314,7 +313,7 @@ var UIController = (function () {
             months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
             month = now.getMonth();
             year = now.getFullYear();
-
+            
             document.querySelector(DOMstrings.dateLabel).textContent = months[month] + ' ' + year;
         },
 
